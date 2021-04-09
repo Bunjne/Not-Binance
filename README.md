@@ -12,8 +12,9 @@ These are the things that you have to prepare:
 * API key from cryptonews-api [here](https://cryptonews-api.com/register)
 
 ## Before you start
-* Create a new branch by this following pattern: **candidate/[Firstname][First character of your lastname]** e.g. **candidate/JohnC**
-* Dont forget to push your branch to submit the assignment
+* Clone this repo.
+* Create a new branch by this following pattern: **candidate/[Firstname][First character of your lastname]** e.g. **candidate/JohnC**.
+* Dont forget to push your branch to submit the assignment.
 
 ## Tasks
 We prepared a little bit of project setup for you including list of coins from CoinRanking API in MainActivity.
