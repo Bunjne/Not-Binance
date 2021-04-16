@@ -33,11 +33,20 @@ inline fun <reified T> String.toObjects(classOf: Class<Array<T>>): MutableList<T
                 .create()
                 .run {
                     fromJson(this@toObjects, classOf)
-                }.asList())
+                }.asList()
+        )
     } catch (exception: Exception) {
         return mutableListOf()
     }
 }
+
+fun Any.toJson() = GsonBuilder()
+    .registerTypeAdapterFactory(NullStringToEmptyAdapterFactory())
+    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+    .create()
+    .run {
+        toJson(this@toJson)
+    }
 
 class NullStringToEmptyAdapterFactory : TypeAdapterFactory {
     override fun <T> create(gson: Gson, type: TypeToken<T>): TypeAdapter<T>? {

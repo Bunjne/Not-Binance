@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="darkGrey">#373737</color>
+    <color name="red">#FF0000</color>
+    <color name="green">#00FF00</color>
+    <color name="grey">#949395</color>
+    <color name="black">#000000</color>
+    <color name="secondGrey">#F6F6F6</color>
+    <color name="thirdGrey">#EAEAEA</color>
+    <color name="newsPagerBackground">#F9F9F9</color>
+    <color name="yellow">#F0B90B</color>
+</resources>

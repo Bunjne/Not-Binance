@@ -1,23 +1,35 @@
 package com.genxaswhiz.library.data.repository.impl
 
 import androidx.lifecycle.LiveData
-import com.genxaswhiz.library.data.entity.Coin
-import com.genxaswhiz.library.data.entity.CoinResponse
-import com.genxaswhiz.library.data.entity.DATASOURCE
-import com.genxaswhiz.library.data.entity.DataWrapper
+import androidx.paging.*
+import com.genxaswhiz.library.data.entity.*
 import com.genxaswhiz.library.data.remote.impl.CoinApiImpl
 import com.genxaswhiz.library.data.repository.CoinRepository
 import com.genxaswhiz.library.extension.toObject
+import com.genxaswhiz.library.widgets.main.coin.CoinPagingSource
+import kotlinx.coroutines.flow.Flow
 import java.util.*
 
 class CoinRepositoryImpl(private val remoteSource: CoinApiImpl) : CoinRepository {
-    override fun getCoins(): LiveData<DataWrapper<List<Coin>>> {
-        return object : LiveData<DataWrapper<List<Coin>>>() {
+    override fun getCoins(sortType: String): Flow<PagingData<Coin>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = 10,
+                prefetchDistance = 50,
+                maxSize = 200,
+                enablePlaceholders = false
+            ),
+            pagingSourceFactory = { CoinPagingSource(remoteSource, sortType) }
+        ).flow
+    }
+
+    override fun getCoinDescription(id: String): LiveData<DataWrapper<Coin>> {
+        return object : LiveData<DataWrapper<Coin>>() {
             init {
-                remoteSource.getCoins().subscribe({ apiResponse ->
-                    val coinResponse = apiResponse.data.toObject<CoinResponse>()
+                remoteSource.getCoinDescription(id).subscribe({ apiResponse ->
+                    val coinResponse = apiResponse.data.toObject<CoinDescriptionResponse>()
                     coinResponse?.let {
-                        val coins = coinResponse.coinDataResponse.coins
+                        val coins = coinResponse.coinDataResponse.coin
                         value = DataWrapper(
                             data = coins,
                             error = apiResponse.error,

@@ -10,12 +10,15 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 object Library {
-    fun init(context: Context, baseUrl: String) {
+
+    fun init(context: Context, baseUrl: String, apiKey: String) {
         with(FuelManager.instance) {
             basePath = baseUrl
-//            baseHeaders = mapOf(
-//                "Content-Type" to "application/json"
-//            )
+
+            baseHeaders = mapOf(
+                "Content-Type" to "application/json",
+                "x-access-token" to apiKey
+            )
         }
 
         startKoin {

@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NotBinance">
+        <activity android:name=".presentation.main.NewsWebsiteActivity"></activity>
+        <activity android:name=".presentation.main.NewsDescriptionActivity" />
+        <activity android:name=".presentation.main.CoinDescriptionActivity" />
         <activity android:name=".presentation.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
