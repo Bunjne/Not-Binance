@@ -11,6 +11,7 @@ import com.genxaswhiz.library.data.entity.News
 import com.genxaswhiz.library.data.view_model.CoinViewModel
 import com.genxaswhiz.library.data.view_model.NewsViewModel
 import com.genxaswhiz.library.extension.toJson
+import com.genxaswhiz.notbiance.Lib.InitialDialogFragment
 import com.genxaswhiz.notbiance.R
 import com.genxaswhiz.notbiance.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
@@ -40,8 +41,13 @@ class MainActivity : AppCompatActivity() {
         observeData()
         observeError()
 
-        getCoins()
-        newsViewModel.getNews(SECTION_TYPE, NUM_PAGES)
+        binding.toolbar.setOnClickListener {
+            InitialDialogFragment.newInstance().show(supportFragmentManager, "")
+
+        }
+        InitialDialogFragment.newInstance().show(supportFragmentManager, "")
+//        getCoins()
+//        newsViewModel.getNews(SECTION_TYPE, NUM_PAGES)
     }
 
     private fun initView() {

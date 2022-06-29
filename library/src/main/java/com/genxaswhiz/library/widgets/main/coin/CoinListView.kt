@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.genxaswhiz.library.R
 import com.genxaswhiz.library.data.entity.Coin
 import com.genxaswhiz.library.databinding.ViewCoinListBinding
+import com.genxaswhiz.library.extension.inflate
 import com.genxaswhiz.library.utility.CustomDividerItemDecoration
 import kotlinx.coroutines.flow.collectLatest
 
